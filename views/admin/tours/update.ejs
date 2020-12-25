@@ -1,0 +1,123 @@
+<% include ../layout/header %>
+    <!-- Left Panel -->
+    <% include ../layout/menu %>
+        <!-- Right Panel -->
+        <div id="right-panel" class="right-panel">
+            <!-- Header-->
+            <% include ../layout/navbar %>
+                <!-- Content -->
+
+                <div class="content">
+                    <div class="animated fadeIn">
+
+                        <div class="row">
+
+                            <div class="col-xs-6 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Update Post</strong>
+                                    </div>
+                                    <% if(success_msg != ''){ %>
+                                        <div class="alert alert-success">
+                                            <%= success_msg%>
+                                        </div>
+                                        <% } %>
+                                            <% if(errors) { %>
+                                                <div class="alert alert-danger">
+                                                    <% errors.forEach(function(e){ %>
+                                                        <%= e.msg %> <br/>
+                                                            <%});%>
+                                                </div>
+                                                <% };%>
+                                                    <form method="POST" enctype="multipart/form-data">
+                                                        <div class="card-body card-block">
+                                                            <div class="form-group">
+                                                                <label class=" form-control-label">TourName</label>
+                                                                <div class="input-group">
+                                                                    <input value="<%= tour.TourName %>" type="text" name="TourName" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class=" form-control-label">TourDescription</label>
+                                                                <div class="input-group">
+                                                                    <textarea class="form-control" rows="5" name="TourDescription"><%= tour.TourDescription %></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class=" form-control-label">TourDuration</label>
+                                                                <div class="input-group">
+                                                                    <input value="<%= tour.TourDuration %>" type="text" name="TourDuration" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class=" form-control-label">TourDeparture</label>
+                                                                <div class="input-group">
+                                                                    <input value="<%= tour.TourDeparture %>" type="text" name="TourDeparture" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class=" form-control-label">TourTransportation</label>
+                                                                <div class="input-group">
+                                                                    <input value="<%= tour.TourTransportation %>" type="text" name="TourTransportation" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class=" form-control-label">TourPolicy</label>
+                                                                <div class="input-group">
+                                                                    <textarea class="form-control" rows="5" name="TourPolicy"><%= tour.TourPolicy %> </textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class=" form-control-label">TourArea</label>
+                                                                <div class="input-group">
+
+                                                                    <select class="form-control" name="TourArea">
+                                                <% listarea.forEach(item =>{ %>
+                                                        <option value="<%= item._id %>" <%= (item._id == tour.TourArea) ? 'selected=\"selected\"' : '' %> ><%= item.AreaName %></option>
+                                                    <% }); %>
+                                                </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class=" form-control-label">TourImages</label>
+                                                                <div class="input-group">
+                                                                    <input multiple class="form-control-file" id="input-multi-files" name="multilple-files" type="file">
+                                                                </div>
+                                                                <div class="preview-images"></div>
+
+                                                            </div>
+                                                            <button type="submit" class="btn btn-info">Submit</button>
+                                                    </form>
+                                                    <!-- <script>
+                                                        $(document).ready(function() {
+                                                            let imagesPreview = function(input, placeToInsertImagePreview) {
+                                                                if (input.files) {
+                                                                    let filesAmount = input.files.length;
+                                                                    for (i = 0; i < filesAmount; i++) {
+                                                                        let reader = new FileReader();
+                                                                        reader.onload = function(event) {
+                                                                            $($.parseHTML("<img>"))
+                                                                                .attr("src", event.target.result)
+                                                                                .appendTo(placeToInsertImagePreview);
+                                                                        };
+                                                                        reader.readAsDataURL(input.files[i]);
+                                                                    }
+                                                                }
+                                                            };
+                                                            $("#input-multi-files").on("change", function() {
+                                                                imagesPreview(this, "div.preview-images");
+                                                            });
+                                                        });
+                                                    </script> -->
+                                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .animated -->
+                </div>
+                <!-- .content -->
+                <div class="clearfix"></div>
+
+                <% include ../layout/footer %>

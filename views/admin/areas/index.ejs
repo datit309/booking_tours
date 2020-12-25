@@ -1,0 +1,80 @@
+<% include ../layout/header %>
+    <!-- Left Panel -->
+    <% include ../layout/menu %>
+        <!-- Right Panel -->
+        <div id="right-panel" class="right-panel">
+            <!-- Header-->
+            <% include ../layout/navbar %>
+                <!-- Content -->
+
+                <div class="content">
+                    <div class="animated fadeIn">
+
+                        <div class="row">
+
+                            <div class="col-xs-6 col-sm-12">
+                                <div class="card">
+
+                                    <% if(success_msg != ''){ %>
+                                        <div class="alert alert-success">
+                                            <%= success_msg%>
+                                        </div>
+                                        <% } %>
+                                            <% if(error_msg != ''){ %>
+                                                <div class="alert alert-danger">
+                                                    <%= error_msg%>
+                                                </div>
+                                                <% } %>
+                                                    <% if(errors) { %>
+                                                        <div class="alert alert-danger">
+                                                            <% errors.forEach(function(e){ %>
+                                                                <%= e.msg %> <br/>
+                                                                    <%});%>
+                                                        </div>
+                                                        <% };%>
+                                                            <table width="100%" class="table table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Name</th>
+                                                                        <th>Description</th>
+                                                                        <th>#</th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <% if(list) { list.forEach(item => { %>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <%= item.AreaName %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%= item.AreaDescription %>
+                                                                            </td>
+                                                                            <td>
+
+                                                                                <a href="./areas/update/<%= item._id %>">
+                                                                                    <li class="fa fa-pencil"></li>
+                                                                                </a> |
+
+                                                                                <a href="./areas/delete/<%= item._id %>">
+                                                                                    <li class="fa fa-trash"></li>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% }) } else { %>
+                                                                            khong co du lieu
+                                                                            <% } %>
+                                                                </tbody>
+                                                            </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- .animated -->
+                </div>
+
+                <!-- .content -->
+                <div class="clearfix"></div>
+
+                <% include ../layout/footer %>

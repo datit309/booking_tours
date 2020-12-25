@@ -1,0 +1,118 @@
+<% include ../layout/header %>
+    <!-- Left Panel -->
+    <% include ../layout/menu %>
+        <!-- Right Panel -->
+        <div id="right-panel" class="right-panel">
+            <!-- Header-->
+            <% include ../layout/navbar %>
+                <!-- Content -->
+
+                <div class="content">
+                    <div class="animated fadeIn">
+
+                        <div class="row">
+
+                            <div class="col-xs-6 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>New Post</strong>
+                                    </div>
+
+                                    <% if(success_msg != ''){ %>
+                                        <div class="alert alert-success">
+                                            <%= success_msg%>
+                                        </div>
+                                        <% } %>
+                                            <% if(errors) { %>
+                                                <div class="alert alert-danger">
+                                                    <% errors.forEach(function(e){ %>
+                                                        <%= e.msg %> <br/>
+                                                            <%});%>
+                                                </div>
+                                                <% };%>
+                                                    <table width="100%" class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <!-- <th>Description</th>
+                                                                <th>Duration</th>
+                                                                <th>Departure</th>
+                                                                <th>Transportation</th>
+                                                                <th>Area</th>
+                                                                <th>Policy</th>
+                                                                <th>Images</th>
+                                                                <th>Detail</th> -->
+                                                                <th>#</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <% if(list) { list.forEach(item => { %>
+                                                                <tr>
+                                                                    <td>
+                                                                        <%= item.TourName %>
+                                                                    </td>
+                                                                    <!-- <td>
+                                                                        <%= item.TourDescription %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.TourDuration %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.TourDeparture %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.TourTransportation %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.TourArea.AreaName %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.TourPolicy %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.TourImages %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <% if(item.TourDetail){ %>
+                                                                            <% item.TourDetail.forEach(i=>{ %>
+                                                                                <%= i.Date %> <br />
+                                                                                    <%= i.Time %> <br />
+                                                                                        <%= i.Available %> <br />
+                                                                                            <%= i.Price %> <br />
+                                                                                                <%= i.PriceChildren %> <br />
+                                                                                                    <%= i.Booked %> <br />
+                                                                                                        <%= i.Discount %> <br />
+                                                                                                            <% }); } %>
+
+                                                                    </td> -->
+                                                                    <td>
+                                                                        <a href="./tours/addcalendar/<%= item._id %>">
+                                                                            <button class="btn btn-warning"><li class="fa fa-calendar"></li></button>
+                                                                        </a>
+                                                                        <a href="./tours/update/<%= item._id %>">
+                                                                            <button class="btn btn-success"><li class="fa fa-pencil"></li></button>
+                                                                        </a>
+                                                                        <a href="./tours/delete/<%= item._id %>">
+                                                                            <button class="btn btn-danger"><li class="fa fa-trash"></li></button>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <% }) } else { %>
+                                                                    khong co du lieu
+                                                                    <% } %>
+                                                        </tbody>
+                                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .animated -->
+
+
+
+                <!-- .content -->
+                <div class="clearfix"></div>
+
+                <% include ../layout/footer %>

@@ -1,0 +1,97 @@
+<% include ../layout/header %>
+    <!-- Left Panel -->
+    <% include ../layout/menu %>
+        <!-- Right Panel -->
+        <div id="right-panel" class="right-panel">
+            <!-- Header-->
+            <% include ../layout/navbar %>
+                <!-- Content -->
+
+                <div class="content">
+                    <div class="animated fadeIn">
+
+                        <div class="row">
+
+                            <div class="col-xs-6 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Add a calendar to the tour</strong>
+                                    </div>
+                                    <% if(success_msg != ''){ %>
+                                        <div class="alert alert-success">
+                                            <%= success_msg%>
+                                        </div>
+                                        <% } %>
+                                            <% if(error_msg != ''){ %>
+                                                <div class="alert alert-danger">
+                                                    <%= error_msg%>
+                                                </div>
+                                                <% } %>
+                                                    <% if(errors) { %>
+                                                        <div class="alert alert-danger">
+                                                            <% errors.forEach(function(e){ %>
+                                                                <%= e.msg %> <br/>
+                                                                    <%});%>
+                                                        </div>
+                                                        <% };%>
+                                                            <form method="POST">
+                                                                <div class="card-body card-block">
+                                                                    <div class="form-group">
+                                                                        <label class=" form-control-label">TourName: <%= tour.TourName %></label>
+
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label class=" form-control-label">Date</label>
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="Date" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class=" form-control-label">Time</label>
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="Time" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class=" form-control-label">Available</label>
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="Available" class="form-control">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label class=" form-control-label">Price</label>
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="Price" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class=" form-control-label">PriceChildren</label>
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="PriceChildren" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class=" form-control-label">Discount</label>
+                                                                        <div class="input-group">
+                                                                            <input type="text" name="Discount" class="form-control">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <button type="submit" class="btn btn-info">Submit</button>
+                                                            </form>
+
+                                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .animated -->
+                </div>
+                <!-- .content -->
+                <div class="clearfix"></div>
+
+
+
+                <% include ../layout/footer %>
